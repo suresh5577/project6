@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+
+{% block body %}
+<form action="/updateprodu/" method="post">
+            {% csrf_token %}
+    {% if data %}
+            <table align="center" border="2">
+
+                <tr>
+                    <th>Product Id</th>
+                    <th><input type="text" name="prodno" value="{{ data.pk }}" readonly></th>
+                </tr>
+                <tr>
+                    <th>Product Name</th>
+                    <th><input type="text" name="prodname" value="{{ data.fields.prod_name }}" required></th>
+                </tr>
+
+                <tr>
+                    <th>Product Price</th>
+                    <th><input type="number" name="prodprice" value="{{ data.fields.prod_price }}" required> </th>
+                </tr>
+                <tr>
+                    <th>Product Quantity</th>
+                    <th><input type="number" name="prodqty" value="{{ data.fields.prod_qty }}" required></th>
+                </tr>
+                <tr>
+                    <th><input type="number" name="merchantid" value="{{ data.fields.merchant }}" hidden required> </th>
+                </tr>
+                <tr>
+                    <th colspan="2"><input type="submit"></th>
+                </tr>
+
+            </table>
+        </form>
+    {% endif %}
+{% endblock %}

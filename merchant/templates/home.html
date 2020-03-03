@@ -1,0 +1,46 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h3 align="center">Online Property sale</h3>
+{% block head %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="/viewprod/?idno={% if data.pk %}{{ data.pk}}{% elif data %}{{ data }}{% endif %}">product</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Sales <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Day Sales</a></li>
+          <li><a href="#">Week Sales</a></li>
+          <li><a href="#">Month Sales</a></li>
+          <li><a href="#">Year Sales</a></li>
+        </ul>
+      </li>
+      <li><a href="//">customers</a></li>
+      <li><a href="#">Complaints</a></li>
+      <li><a href="/login/">LogOut</a></li>
+    </ul>
+  </div>
+</nav>
+
+{% endblock %}
+
+
+{% block body %}
+
+   <h3 align="center"> welcome {{ data.fields.merchant_name}} </h3>
+{% endblock %}
+{% block message %}
+{% if messages %}
+{% for message in messages %}
+{{ message }}
+{% endfor %}
+{% endif %}
+{% endblock %}
+</body>

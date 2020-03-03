@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+
+{% block head %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="">Home</a></li>
+      <li><a href="/viewprod/?idno={{ data.pk}}{% if data %}{{ data }}{% endif %}">product</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Sales <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Day Sales</a></li>
+          <li><a href="#">Week Sales</a></li>
+          <li><a href="#">Month Sales</a></li>
+          <li><a href="#">Year Sales</a></li>
+        </ul>
+      </li>
+      <li><a href="//">customers</a></li>
+      <li><a href="#">Complaints</a></li>
+      <li><a href="/">LogOut</a></li>
+    </ul>
+  </div>
+</nav>
+
+{% endblock %}
+{% block body %}
+   <h3 align="center"> welcome {{ data.fields.merchant_name}} </h3>
+{% endblock %}
+
+{% block message %}
+
+{% endblock %}
+
+
+
+
+
+
+
+{% comment %}
+{% if data %}
+    {{ data.pk }}<br><br>
+    {{ data.fields.merchant_name}}<br><br>
+    {{ data.fields.merchant_email }}<br><br>
+    {{ data.fields.merchant_contact_no }}<br><br>
+{% endif %}
+{% endcomment %}

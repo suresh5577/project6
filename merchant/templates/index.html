@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+{% block body %}
+<form action="/login/" method="post">
+    {% csrf_token %}
+    <table align="center">
+        <tr>
+            <th>UserName</th>
+            <th><input type="text" name="username" placeholder="Enter your User Name "></th>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <th><input type="password" name="password" placeholder="Enter your password "></th>
+        </tr>
+        <tr>
+            <th colspan="2"><input type="submit"></th>
+        </tr>
+        <tr>
+            <th colspan="2"><a href="/changrpassword/">changepassword</a></th>
+        </tr>
+
+    </table>
+</form>
+{% endblock %}
+{% block message %}
+    {% if message %}
+        {{ message }}
+    {% endif %}
+{% endblock %}

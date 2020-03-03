@@ -1,0 +1,70 @@
+{% extends 'welcome.html' %}
+{% block body %}
+<table align="center" border="2">
+    <tr>
+        <tr>
+        <form action="/savemerchant/" method="post">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th>Merchant Id</th>
+                    {% if id %}
+                    <th><input type="number" name="merchantid" value="{{ id }}" readonly></th>
+                    {% endif %}
+                </tr>
+
+                <tr>
+                    <th>Merchant Name</th>
+                    <th><input type="text" name="merchantname" required></th>
+                </tr>
+                <tr>
+                    <th>Merchant Email Id</th>
+                    <th><input type="email" name="merchantemailid" required></th>
+                </tr>
+                <tr>
+                    <th>Merchant Mobile No</th>
+                    <th><input type="number" name="contactno" required></th>
+                </tr>
+                <tr>
+                    <th colspan="2"><input type="submit"></th>
+                </tr>
+
+            </table>
+        </form>
+        </tr>
+    <tr>
+        <table align="left" border="2">
+                <tr>
+                    <th>Merchant Id</th>
+                    <th>Merchant Name</th>
+                    <th>Merchant Email Id</th>
+                    <th>Merchant Mobile No</th>
+                    <th>Delete Merchant</th>
+                </tr>
+            {% if data %}
+                {% for x in data %}
+                <tr>
+
+                <td>{{ x.merchant_id }}</td>
+                <td>{{ x.merchant_name }}</td>
+                <td>{{ x.merchant_email }}</td>
+                <td>{{ x.merchant_contact_no }}</td>
+                <td>
+                <a href="/deletemerchant{{ x.merchant_id }}/">Delete</a>
+                </td>
+
+                </tr>
+            {% endfor %}
+                {% endif %}
+        </table>
+    </tr>
+
+</table>
+    {% endblock %}
+{% block message %}
+{% if messages %}
+{% for message in messages %}
+{{ message }}
+{% endfor %}
+{% endif %}
+{% endblock %}
